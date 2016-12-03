@@ -1,0 +1,21 @@
+{
+    "name": "cucumber-coverage",
+    "version": "1.0.0-rc.1",
+    "description": "Coverage reporting for cucumber with grunt",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sysen-limited/cucumber-coverage.git"
+    },
+    "keywords": [
+        "coverage",
+        "cucumber",
+        "grunt"
+    ],
+    "author": "Sysen Limited",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/sysen-limited/cucumber-coverage/issues"
+    },
+    "homepage": "https://github.com/sysen-limited/cucumber-coverage#readme"
+}

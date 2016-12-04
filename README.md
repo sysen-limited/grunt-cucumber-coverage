@@ -14,13 +14,13 @@ This project is aimed to work with both ES5 and ES6 source code projects.
 Get the project as a dependency;
 
 ```
-npm install --save-dev cucumber-coverage
+npm install --save-dev grunt-cucumber-coverage
 ```
 
 Add the task to your gruntfile script;
 
 ```
-grunt.loadNpmTasks('cucumber-coverage');
+grunt.loadNpmTasks('grunt-cucumber-coverage');
 ```
 
 > Tip: We recommend when using grunt to use the project [load-grunt-tasks](https://www.github.com/sindresorhus/load-grunt-tasks) to simplify your inclusion of grunt task dependencies.

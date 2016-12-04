@@ -28,6 +28,8 @@ module.exports = function (grunt) {
 
     grunt.loadTasks('tasks');
 
+    grunt.registerTask('test', ['default']);
+
     grunt.registerTask('default', ['eslint', 'cucumber_coverage']);
 
 };

@@ -3,6 +3,9 @@
     "version": "1.0.0-rc.1",
     "description": "Coverage reporting for cucumber with grunt",
     "main": "gruntfile.js",
+    "scripts": {
+        "test": "grunt test"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/sysen-limited/grunt-cucumber-coverage.git"

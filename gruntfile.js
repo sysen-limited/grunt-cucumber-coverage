@@ -18,7 +18,13 @@ module.exports = function (grunt) {
                     src: '**/*.feature'
                 },
                 options: {
-                    coverage: 'example/src'
+                    coverage: 'example/src',
+                    check: {
+                        lines: 100,
+                        statements: 100,
+                        functions: 100,
+                        branches: 100
+                    }
                 }
             }
         }

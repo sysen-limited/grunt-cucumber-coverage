@@ -85,7 +85,7 @@ Specify where step definitions are located from project root directory
 
 Type: `String`
 
-Default: `files.cwd` or `` + `step_definitions`
+Default: `files.cwd` + `step_definitions`
 
 ## License
 

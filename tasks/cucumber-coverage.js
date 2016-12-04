@@ -6,22 +6,31 @@ module.exports = function (grunt) {
         return new Promise((resolve, reject) => {
             let coverage = grunt.option('coverage') || options.coverage;
             let steps = grunt.option('steps') || options.steps;
+            let tags = grunt.option('tags') || options.tags;
 
             if (!features.length) {
                 return grunt.log.error('No feature files found.');
             }
 
-            let args = ['node_modules/istanbul/lib/cli.js', 'cover'];
+            let args = ['node_modules/.bin/istanbul', 'cover'];
 
             args.push('--root', coverage);
 
             args.push('--print', 'summary');
 
-            args.push('node_modules/.bin/cucumber-js');
+            args.push('node_modules/.bin/cucumber-js', '--', [...features.filter((feature) => grunt.file.exists(feature))]);
 
             args.push('--require', steps || path.join(grunt.file.isDir(features[0]) ? features[0] : '', 'step_definitions'));
 
-            args = args.concat(features.filter((feature) => grunt.file.isFile(feature)));
+            if(tags) {
+                if(tags instanceof Array) {
+                    tags.forEach((tag) => {
+                        args.push('--tags', tag);
+                    });
+                } else {
+                    args.push('--tags', tags);
+                }
+            }
 
             let spawn = grunt.util.spawn({
                 cmd: process.execPath,
@@ -44,7 +53,7 @@ module.exports = function (grunt) {
     let executeCheck = (grunt, check) => {
         return new Promise((resolve, reject) => {
 
-            let args = ['node_modules/istanbul/lib/cli.js', 'check-coverage'];
+            let args = ['node_modules/.bin/istanbul', 'check-coverage'];
 
             args.push('--lines', check.lines || 80);
 

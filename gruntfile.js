@@ -13,10 +13,7 @@ module.exports = function (grunt) {
         // EXAMPLES
         cucumber_coverage: {
             example: {
-                files: {
-                    cwd: 'example/features',
-                    src: '**/*.feature'
-                },
+                src: 'example/features',
                 options: {
                     coverage: 'example/src',
                     check: {
@@ -25,7 +22,8 @@ module.exports = function (grunt) {
                         functions: 100,
                         branches: 100
                     },
-                    steps: 'example/features/step_definitions'
+                    steps: 'example/features/step_definitions',
+                    tags: ['~@Ignore']
                 }
             }
         }

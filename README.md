@@ -24,17 +24,15 @@ Add the task to your gruntfile script;
 grunt.loadNpmTasks('grunt-cucumber-coverage');
 ```
 
-> Tip: We recommend when using grunt to use the project [load-grunt-tasks](https://www.github.com/sindresorhus/load-grunt-tasks) to simplify your inclusion of grunt task dependencies.
+> Tip:
+> We recommend when using grunt to use the project [load-grunt-tasks](https://www.github.com/sindresorhus/load-grunt-tasks) to simplify your inclusion of grunt task dependencies.
 
 ## Usage Examples
 
 ```
 cucumber_coverage: {
     example: {
-        files: {
-            cwd: 'example/features',
-            src: '**/*.feature'
-        },
+        src: 'example/features',
         options: {
             coverage: 'example/src',
             check: {
@@ -43,7 +41,8 @@ cucumber_coverage: {
                 functions: 100,
                 branches: 100
             },
-            steps: 'example/features/step_definitions'
+            steps: 'example/features/step_definitions',
+            tags: '~@Ignore'
         }
     }
 }
@@ -51,7 +50,8 @@ cucumber_coverage: {
 grunt.registerTask('test', ['cucumber_coverage']);
 ```
 
-> Note: The **files** value should be set to the location of your feature files that will be executed using the [grunt.file.expand](http://gruntjs.com/api/grunt.file#globbing-patterns) format for pattern globbing.
+> Note:
+> The **src** value should be set to the location of your cucumber / feature files.
 
 ## Options
 
@@ -59,14 +59,12 @@ grunt.registerTask('test', ['cucumber_coverage']);
 This is the source code folder for which coverage reporting will be made.
 
 Type: `String`
-
 Default: `null`
 
 ### options.check
 This enables coverage checking of thresholds, if set to true then default values are used.
 
 Type: `Object` or `Boolean`
-
 Default: `false`
 
 | key | default |
@@ -76,16 +74,29 @@ Default: `false`
 | functions | 80 |
 | branches | 80 |
 
-> Hint: You can also change just individual keys if required and defaults will be used for others.
+> Hint:
+> You can also change just individual keys if required and defaults will be used for others.
 
-> Note: The default *false* value will mean that coverage levels are not checked and low coverage will not result in a grunt error.
+> Note:
+> The default **false** value will mean that coverage levels are not checked and low coverage will not result in a grunt error.
 
 ### options.steps
 Specify where step definitions are located from project root directory
 
 Type: `String`
+Default: `src` + `/` + `step_definitions`
 
-Default: `files.cwd` + `step_definitions`
+### options.tags
+Run just a specific tag or tags for a feature file set
+
+Type: `String` or `Array`
+Default: `null`
+
+> Hint:
+> Run just one tag `@tag`
+> Run several tags `@tag,@special`
+> Exclude a tag `~@ignore`
+> Run a mix `['@tag,@special', '~@ignore']`
 
 ## License
 

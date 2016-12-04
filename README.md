@@ -1,13 +1,14 @@
 # Cucumber Coverage
 
-Coverage reporting for cucumber with grunt.
+[![Build Status](https://travis-ci.org/sysen-limited/grunt-cucumber-coverage.svg?branch=master)](https://travis-ci.org/sysen-limited/grunt-cucumber-coverage)
+
+Coverage reporting for Node projects using cucumber with grunt.
 
 This project is aimed at those using cucumber to execute tests and need to gain coverage information,
-while coverage reporters are available for use with tools like selenium and protractor this is aimed at those running tests from the command line.
+while coverage reporters are available for use with tools like selenium and protractor this is aimed at those running Node tests without a browser.
+Both ES5 and ES6 code bases have been tested to ensure current practices are supported.
 
-Configure your tests to execute with cucumber and instrument source code with istanbul to gather coverage information.
-
-This project is aimed to work with both ES5 and ES6 source code projects.
+Runs your tests by executing feature files with [cucumber](https://github.com/cucumber/cucumber-js) and gathers coverage information of source code with [istanbul](https://github.com/gotwarlost/istanbul).
 
 ## Getting Started
 
@@ -45,6 +46,8 @@ cucumber_coverage: {
         }
     }
 }
+
+grunt.registerTask('test', ['cucumber_coverage']);
 ```
 
 > Note: The **files** value should be set to the location of your feature files that will be executed using the [grunt.file.expand](http://gruntjs.com/api/grunt.file#globbing-patterns) format for pattern globbing.

@@ -31,7 +31,19 @@ grunt.loadNpmTasks('grunt-cucumber-coverage');
 
 ## Examples
 
-*Coming soon*
+```
+cucumber_coverage: {
+    example: {
+        files: {
+            cwd: 'example/features',
+            src: '**/*.feature'
+        },
+        options: {
+            coverage: 'example/src'
+        }
+    }
+}
+```
 
 ## Options
 

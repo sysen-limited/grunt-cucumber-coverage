@@ -7,8 +7,6 @@ module.exports = function (grunt) {
             let coverage = grunt.option('coverage') || options.coverage;
             let steps = grunt.option('steps') || options.steps;
 
-            features = features.filter(Boolean);
-
             if (!features.length) {
                 return grunt.log.error('No feature files found.');
             }
@@ -23,7 +21,7 @@ module.exports = function (grunt) {
 
             args.push('--require', steps || path.join(grunt.file.isDir(features[0]) ? features[0] : '', 'step_definitions'));
 
-            args = args.concat(features);
+            args = args.concat(features.filter((feature) => grunt.file.isFile(feature)));
 
             let spawn = grunt.util.spawn({
                 cmd: process.execPath,

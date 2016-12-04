@@ -24,7 +24,8 @@ module.exports = function (grunt) {
                         statements: 100,
                         functions: 100,
                         branches: 100
-                    }
+                    },
+                    steps: 'example/features/step_definitions'
                 }
             }
         }

@@ -1,12 +1,15 @@
+const path = require('path');
+
 module.exports = function (grunt) {
 
     let executeCoverage = (grunt, features, options) => {
         return new Promise((resolve, reject) => {
             let coverage = grunt.option('coverage') || options.coverage;
+            let steps = grunt.option('steps') || options.steps;
 
             features = features.filter(Boolean);
 
-            if(!features.length) {
+            if (!features.length) {
                 return grunt.log.error('No feature files found.');
             }
 
@@ -16,7 +19,11 @@ module.exports = function (grunt) {
 
             args.push('--print', 'summary');
 
-            args = args.concat(['node_modules/.bin/cucumber-js']).concat(features);
+            args.push('node_modules/.bin/cucumber-js');
+
+            args.push('--require', steps || path.join(grunt.file.isDir(features[0]) ? features[0] : '', 'step_definitions'));
+
+            args = args.concat(features);
 
             let spawn = grunt.util.spawn({
                 cmd: process.execPath,
@@ -25,7 +32,7 @@ module.exports = function (grunt) {
                     env: process.env
                 }
             }, (err) => {
-                if(err) {
+                if (err) {
                     reject(new Error('Feature execution failures have occurred, please fix failing tests.'));
                 } else {
                     resolve('Coverage report created.');
@@ -56,7 +63,7 @@ module.exports = function (grunt) {
                     env: process.env
                 }
             }, (err) => {
-                if(err) {
+                if (err) {
                     reject(err);
                 } else {
                     resolve('Coverage threshold successful.');

@@ -79,6 +79,13 @@ Default: `false`
 
 > Note: The default *false* value will mean that coverage levels are not checked and low coverage will not result in a grunt error.
 
+### options.steps
+Specify where step definitions are located from project root directory
+
+Type: `String`
+
+Default: `files.cwd` or `` + `step_definitions`
+
 ## License
 
 Apache 2.0 © [Sysen Limited](http://www.sysen.co.uk)

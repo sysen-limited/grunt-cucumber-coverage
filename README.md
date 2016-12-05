@@ -27,6 +27,51 @@ grunt.loadNpmTasks('grunt-cucumber-coverage');
 > Tip:  
 > We recommend when using grunt to use the project [load-grunt-tasks](https://www.github.com/sindresorhus/load-grunt-tasks) to simplify your inclusion of grunt task dependencies.
 
+## Code Coverage Output
+
+### Terminal / CLI
+
+```
+$ grunt
+
+Running "eslint:target" (eslint) task
+
+Running "cucumber_coverage:example" (cucumber_coverage) task
+Feature: Example of running a cucumber test
+
+  Scenario: This tests our addition method
+  ✔ Given I have a script called "one.js"
+  ✔ When I call the "sum" method with values 5 and 4
+  ✔ Then The result should be 9
+
+  Scenario: This tests our subtraction method
+  ✔ Given I have a script called "one.js"
+  ✔ When I call the "diff" method with values 5 and 4
+  ✔ Then The result should be 1
+
+  Scenario: This tests our multiply method
+  ✔ Given I have a script called "one.js"
+  ✔ When I call the "times" method with values 5 and 4
+  ✔ Then The result should be 20
+
+3 scenarios (3 passed)
+9 steps (9 passed)
+0m00.016s
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 4/4 )
+Branches     : 100% ( 0/0 )
+Functions    : 100% ( 3/3 )
+Lines        : 100% ( 4/4 )
+================================================================================
+
+Done.
+```
+
+### Html
+
+![screen shot 2016-12-04 at 19 40 36](https://cloud.githubusercontent.com/assets/624760/20876576/102b83d8-babb-11e6-9a86-ed178eb00c84.png)
+
 ## Usage Examples
 
 ```

@@ -129,7 +129,7 @@ $ grunt
 
 The following are some screenshots from the HTML produced report for the above tests being executed.
 
-![html-report](https://cloud.githubusercontent.com/assets/773633/21050199/3b3afe42-be11-11e6-8d20-7b85ecac0498.png)
+![html-report](https://cloud.githubusercontent.com/assets/773633/21051809/ca2ac38c-be19-11e6-9e72-7811e2fcb73c.png)
 
 ## Options
 

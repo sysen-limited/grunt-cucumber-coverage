@@ -1,6 +1,6 @@
 {
     "name": "grunt-cucumber-coverage",
-    "version": "1.0.0-rc.5",
+    "version": "1.0.0-rc.6",
     "description": "Coverage reporting for cucumber with grunt",
     "main": "gruntfile.js",
     "scripts": {

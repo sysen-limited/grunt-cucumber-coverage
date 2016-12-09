@@ -1,3 +1,11 @@
 language: node_js
 node_js: 6
 before_install: npm install -g grunt-cli
+deploy:
+  provider: npm
+  email: andrew@sysen.co.uk
+  api_key:
+    secure: VG9GeZcKhixc5QYsuQYXs3mAYzti6z9znFswytz+8XmhUaMT7CtgNqXqkum9H7tzjjY5N+X0gJV0r8CRDoGyV57HxpXZg9iGLQd8DyoRZx36zQptPSRro/ywxTSx8bnmF1/WOBhG/8iBYQqf37jPnWERO5DGwu60jJihBHYfEn8/0/3+DqOo4XW7Hu/d7ZqVy4kn/JZFHBFrPLI7plDNQiQMUhUKhVHXb5ostERnQPWcyQRCIuozni7Vh6QGnPR+4SmbDurvDgLu1/OnHclO2rk1+RC13Qa8qPAyKtCE5rufW6dueUeJ5fT+T5hONEcDlAPChkvMOdV+UHJ97b8GqmotKTMPYDPKjYo+KekCTZjOlrG50pBfwRv42HEuFoeSe3w52nDS1ZZGsxsMtmyt49hmRmoP669DYILdrFUZNGfz+e14t8lbIH3C3lSLHFDFWy99qS3k//E+gyTRgzc8qEJNvzqH3/dTrPSuzmXxCkiJZFT+qwlZlg+wVs/KjQHvln1hrM1xX+PiCgjmIT8XTaQDh6NcIqaJiSYv9wXdsEc7yxql8gwVXVO4Wrl2n7DOIi+JOOZU+hhWlZf4XOvwMB+CeEj9M8D2isY2d82Jg6aIlq1hSBdfVfJxtfG/RrB9bLvB2z3JYKGAnXvWuJuYc2/GrTA+0zFpTK7x2jndusQ=
+  on:
+    tags: true
+    repo: sysen-limited/grunt-cucumber-coverage

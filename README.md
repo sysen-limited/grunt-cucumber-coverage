@@ -29,9 +29,24 @@ grunt.loadNpmTasks('grunt-cucumber-coverage');
 
 ## Usage
 
-Below are some example of the plugin being used, you can also see the code in the example folder of this project and it will run if tryng this project locally.
+Below is an example of the plugin being used and the outputs it provides, you can also see the code in the example folder of this project and it will run if tryng this project locally.
 
 ### Gruntfile example
+
+The minimum required configuration to use this plugin with a standard project using a cucumber setup may look like this.
+
+```javascript
+cucumber_coverage: {
+    example: {
+        src: 'example/features',
+        options: {
+            coverage: 'example/src'
+        }
+    }
+}
+```
+
+This gruntfile implementation shows all the possible options we currently support being configured for execution, this allows for more custom implementations of cucumber being used in a project.
 
 ```javascript
 cucumber_coverage: {

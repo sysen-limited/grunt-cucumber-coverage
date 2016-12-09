@@ -57,8 +57,9 @@ module.exports = function (grunt) {
         });
     };
 
-    let executeCheck = (grunt, check) => {
+    let executeCheck = (grunt, check, options) => {
         return new Promise((resolve, reject) => {
+            let tags = grunt.option('tags') || options.tags;
 
             let args = ['node_modules/.bin/istanbul', 'check-coverage'];
 
@@ -78,7 +79,12 @@ module.exports = function (grunt) {
                 }
             }, (err) => {
                 if (err) {
-                    reject(err);
+                    if(tags && !check.force) {
+                        grunt.log.warn('Coverage threshold not reached.');
+                        resolve('Threshold checking ignored while using tags.');
+                    } else {
+                        reject(err);
+                    }
                 } else {
                     resolve('Coverage threshold successful.');
                 }
@@ -95,7 +101,7 @@ module.exports = function (grunt) {
         let check = grunt.option('check') || options.check;
 
         executeCoverage(grunt, features, options)
-            .then((err) => check ? executeCheck(grunt, check) : err)
+            .then((err) => check ? executeCheck(grunt, check, options) : err)
             .then((result) => {
                 grunt.log.ok(result);
                 done(true);

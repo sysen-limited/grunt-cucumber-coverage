@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 
     let executeCoverage = (grunt, features, options) => {
         return new Promise((resolve, reject) => {
-            let coverage = grunt.option('coverage') || options.coverage;
+            let target = grunt.option('target') || options.target;
             let format = grunt.option('format') || options.format;
             let print = grunt.option('print') || options.print;
             let report = grunt.option('report') || options.report;
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
             let args = ['node_modules/.bin/istanbul', 'cover'];
 
-            args.push('--root', coverage);
+            args.push('--root', target);
 
             args.push('--print', print || 'summary');
 

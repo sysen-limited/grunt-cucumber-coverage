@@ -20,15 +20,14 @@ module.exports = function (grunt) {
             exampleOne: {
                 src: 'example/features',
                 options: {
-                    coverage: 'example/src',
                     print: 'detail',
-                    tags: ['@Shapes']
+                    tags: ['@Shapes'],
+                    target: 'example/src'
                 }
             },
             exampleTwo: {
                 src: 'example/features',
                 options: {
-                    coverage: 'example/src',
                     check: {
                         lines: 100,
                         statements: 100,
@@ -40,7 +39,8 @@ module.exports = function (grunt) {
                     print: 'detail',
                     report: 'lcovonly',
                     steps: 'example/features/step_definitions',
-                    tags: ['~@Ignore']
+                    tags: ['~@Ignore'],
+                    target: 'example/src'
                 }
             }
         }

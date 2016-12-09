@@ -25,7 +25,7 @@ grunt.loadNpmTasks('grunt-cucumber-coverage');
 ```
 
 > Tip:  
-> We recommend when using grunt to use the project [load-grunt-tasks](https://www.github.com/sindresorhus/load-grunt-tasks) to simplify your inclusion of grunt task dependencies.
+> We recommend using the project [load-grunt-tasks](https://www.github.com/sindresorhus/load-grunt-tasks) to simplify your inclusion of grunt task dependencies.
 
 ## Usage
 
@@ -40,7 +40,7 @@ cucumber_coverage: {
     example: {
         src: 'example/features',
         options: {
-            coverage: 'example/src'
+            target: 'example/src'
         }
     }
 }
@@ -53,7 +53,6 @@ cucumber_coverage: {
     example: {
         src: 'example/features',                            // folder to the tests to execute
         options: {
-            coverage: 'example/src',                        // target source code to perform coverage of
             check: {                                        // check coverage meets minimum requirements of project
                 lines: 100,
                 statements: 100,
@@ -65,7 +64,8 @@ cucumber_coverage: {
             print: 'detail',                                // display results of coverage to console (default: summary)
             report: 'html',                                 // generate a coverage report (default: lcov)
             steps: 'example/features/step_definitions',     // location of step definitions to support feature tests
-            tags: '~@Ignore'                                // Any tags you might want to limit / exclude from running
+            tags: '~@Ignore',                               // Any tags you might want to limit / exclude from running
+            target: 'example/src'                           // target source code to perform coverage of
         }
     }
 }
@@ -157,21 +157,13 @@ This equates to the `--lines` `--statements` `--functions` `--branches` options 
 > Hint:  
 > You can also change just individual keys if required and defaults will be used for others.
 
-### options.coverage
-This is the source code folder for which coverage reporting will be made.
-
-Type: `String`  
-Default: `null`
-
-This equates to the `--root` option for istanbul coverage.
-
 ### options.format
 Execution report of the features which are passing or failing.
 
 Type: `String`  
 Default: `pretty`
 
-This equates to the `--reporter` option for cucumber.
+This equates to the `--format` option for cucumber.
 
 > Options are:  
 > `pretty` - show feature execution as it occurs with each step occurring  
@@ -231,6 +223,14 @@ This equates to the `--tags` option for cucumber.
 > Run several tags `@tag,@special`  
 > Exclude a tag `~@ignore`  
 > Run a mix `['@tag,@special', '~@ignore']`
+
+### options.target
+This is the source code folder for which any coverage reporting will be made.
+
+Type: `String`  
+Default: `null`
+
+This equates to the `--root` option for istanbul coverage.
 
 ## License
 

@@ -29,7 +29,7 @@ grunt.loadNpmTasks('grunt-cucumber-coverage');
 
 ## Usage Examples
 
-```
+```javascript
 cucumber_coverage: {
     example: {
         src: 'example/features',                            // folder to the tests to execute

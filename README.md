@@ -60,7 +60,9 @@ grunt.registerTask('test', ['cucumber_coverage']);
 > Note:  
 > The **src** value should be set to the location of your cucumber / feature files.
 
-### Report output
+### Report output (console)
+
+This is the output captured when running the `exampleOne` task in this projects gruntfile. It does not perform coverage checking and mostly uses default settings.
 
 ```
 $ grunt
@@ -94,6 +96,7 @@ $ grunt
  3 scenarios (3 passed)
  9 steps (9 passed)
  0m00.021s
+ 
  ---------------|----------|----------|----------|----------|----------------|
  File           |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
  ---------------|----------|----------|----------|----------|----------------|
@@ -106,6 +109,12 @@ $ grunt
  
  >> Coverage report created.
 ```
+
+### Report output (html)
+
+The following are some screenshots from the HTML produced report for the above tests being executed.
+
+![html-report](https://cloud.githubusercontent.com/assets/773633/21050199/3b3afe42-be11-11e6-8d20-7b85ecac0498.png)
 
 ## Options
 

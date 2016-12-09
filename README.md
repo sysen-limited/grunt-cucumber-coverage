@@ -61,8 +61,11 @@ grunt.registerTask('test', ['cucumber_coverage']);
 ### options.check
 This enables coverage checking of thresholds, if set to true then default values are used.
 
-Type: `Object` or `Boolean`
+Type: `Object` or `Boolean`  
 Default: `false`
+
+> Note:  
+> The default **false** value will mean that coverage levels are not checked and low coverage will not result in a grunt error.
 
 | key | default |
 | :--- | :--- |
@@ -75,9 +78,6 @@ This equates to the `--lines` `--statements` `--functions` `--branches` options 
 
 > Hint:  
 > You can also change just individual keys if required and defaults will be used for others.
-
-> Note:  
-> The default **false** value will mean that coverage levels are not checked and low coverage will not result in a grunt error.
 
 ### options.coverage
 This is the source code folder for which coverage reporting will be made.
@@ -93,14 +93,13 @@ Execution report of the features which are passing or failing.
 Type: `String`  
 Default: `pretty`
 
-Options for formatting are;
+This equates to the `--reporter` option for cucumber.
 
+> Options are:  
 > `pretty` - show feature execution as it occurs with each step occurring  
 > `progress` - displays a single character to signify a pass or failure of each scenario step executed  
 > `json` - outputs a json formatted data as the results of feature execution  
 > `summary` - provides a summary of execution only after all features and scenarios have completed
-
-This equates to the `--reporter` option for cucumber.
 
 ### options.print
 Results of the coverage shown in stdout (console) after feature execution completes.
@@ -108,32 +107,30 @@ Results of the coverage shown in stdout (console) after feature execution comple
 Type: `String`  
 Default: `summary`
 
-Options for formatting are;
+This equates to the `--print` option for istanbul coverage.
 
+> Options are:  
 > `none` - do not provide any coverage information  
 > `summary` - show just to total coverage percentages for all source files  
 > `detail` - information about every source file with coverage details  
 > `both` - shows both the detail output followed by the summary result
 
-This equates to the `--print` option for istanbul coverage.
-
 ### options.report
 Select the output format of test coverage report to be produced.
 
-Type: `String`
+Type: `String`  
 Default: `lcov`
 
-Options for the report are;
+This equates to the `--report` option for istanbul coverage.
 
+> Options are:  
 > `html` - creates HTML files with annotations for source code covered  
 > `lcovonly` - creates only an lcov.info file as output  
 > `lcov` - generates both the HTML and lcov.info reports  
 > `cobertura` - create a cobertura-coverage.xml report to use with Hudson CI  
-> `text-summary` - a simple text summary of the coverage result, output is to stdout (console)  
+> `text-summary` - a simple text summary of the coverage result, output is to process.stdout (console)  
 > `text` - a more detailed text report showing information about all source files covered  
 > `teamcity` - generates a series of message used by Team City for coverage reporting
-
-This equates to the `--report` option for istanbul coverage.
 
 ### options.steps
 Specify where step definitions are located from project root directory.

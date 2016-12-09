@@ -5,6 +5,9 @@ module.exports = function (grunt) {
     let executeCoverage = (grunt, features, options) => {
         return new Promise((resolve, reject) => {
             let coverage = grunt.option('coverage') || options.coverage;
+            let format = grunt.option('format') || options.format;
+            let print = grunt.option('print') || options.print;
+            let report = grunt.option('report') || options.report;
             let steps = grunt.option('steps') || options.steps;
             let tags = grunt.option('tags') || options.tags;
 
@@ -16,11 +19,15 @@ module.exports = function (grunt) {
 
             args.push('--root', coverage);
 
-            args.push('--print', 'summary');
+            args.push('--print', print || 'summary');
+
+            args.push('--report', report || 'lcov');
 
             args.push('node_modules/.bin/cucumber-js', '--', [...features.filter((feature) => grunt.file.exists(feature))]);
 
             args.push('--require', steps || path.join(grunt.file.isDir(features[0]) ? features[0] : '', 'step_definitions'));
+
+            args.push('--format', format || 'pretty');
 
             if(tags) {
                 if(tags instanceof Array) {

@@ -2,6 +2,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
 
+        // CLEAN UP COVERAGE OUTPUT DIRECTORY
+        clean: {
+            src: 'coverage'
+        },
+
         // CODE STANDARDS
         eslint: {
             options: {
@@ -12,7 +17,15 @@ module.exports = function (grunt) {
 
         // EXAMPLES
         cucumber_coverage: {
-            example: {
+            exampleOne: {
+                src: 'example/features',
+                options: {
+                    coverage: 'example/src',
+                    print: 'detail',
+                    tags: ['@Shapes']
+                }
+            },
+            exampleTwo: {
                 src: 'example/features',
                 options: {
                     coverage: 'example/src',
@@ -22,6 +35,9 @@ module.exports = function (grunt) {
                         functions: 100,
                         branches: 100
                     },
+                    format: 'progress',
+                    print: 'detail',
+                    report: 'lcovonly',
                     steps: 'example/features/step_definitions',
                     tags: ['~@Ignore']
                 }
@@ -35,6 +51,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', ['default']);
 
-    grunt.registerTask('default', ['eslint', 'cucumber_coverage']);
+    grunt.registerTask('default', ['clean', 'eslint', 'cucumber_coverage']);
 
 };

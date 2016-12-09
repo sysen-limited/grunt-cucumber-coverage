@@ -32,17 +32,20 @@ grunt.loadNpmTasks('grunt-cucumber-coverage');
 ```
 cucumber_coverage: {
     example: {
-        src: 'example/features',
+        src: 'example/features',                            // folder to the tests to execute
         options: {
-            coverage: 'example/src',
-            check: {
+            coverage: 'example/src',                        // target source code to perform coverage of
+            check: {                                        // check coverage meets minimum requirements of project
                 lines: 100,
                 statements: 100,
                 functions: 100,
-                branches: 100
+                branches: 100                               // all are percentages to use during checks
             },
-            steps: 'example/features/step_definitions',
-            tags: '~@Ignore'
+            format: 'pretty',                               // showing output of feature execution (default: pretty)
+            print: 'detail',                                // display results of coverage to console (default: summary)
+            report: 'html',                                 // generate a coverage report (default: lcov)
+            steps: 'example/features/step_definitions',     // location of step definitions to support feature tests
+            tags: '~@Ignore'                                // Any tags you might want to limit / exclude from running
         }
     }
 }
@@ -68,7 +71,7 @@ Default: `false`
 | functions | 80 |
 | branches | 80 |
 
-This equates to the `--lines` `--statements` `--functions` `--branches` options for istanbul check-coverage
+This equates to the `--lines` `--statements` `--functions` `--branches` options for istanbul check-coverage.
 
 > Hint:  
 > You can also change just individual keys if required and defaults will be used for others.
@@ -82,23 +85,71 @@ This is the source code folder for which coverage reporting will be made.
 Type: `String`  
 Default: `null`
 
-This equates to the `--root` option for istanbul cover
+This equates to the `--root` option for istanbul coverage.
+
+### options.format
+Execution report of the features which are passing or failing.
+
+Type: `String`  
+Default: `pretty`
+
+Options for formatting are;
+
+> `pretty` - show feature execution as it occurs with each step occurring  
+> `progress` - displays a single character to signify a pass or failure of each scenario step executed  
+> `json` - outputs a json formatted data as the results of feature execution  
+> `summary` - provides a summary of execution only after all features and scenarios have completed
+
+This equates to the `--reporter` option for cucumber.
+
+### options.print
+Results of the coverage shown in stdout (console) after feature execution completes.
+
+Type: `String`  
+Default: `summary`
+
+Options for formatting are;
+
+> `none` - do not provide any coverage information  
+> `summary` - show just to total coverage percentages for all source files  
+> `detail` - information about every source file with coverage details  
+> `both` - shows both the detail output followed by the summary result
+
+This equates to the `--print` option for istanbul coverage.
+
+### options.report
+Select the output format of test coverage report to be produced.
+
+Type: `String`
+Default: `lcov`
+
+Options for the report are;
+
+> `html` - creates HTML files with annotations for source code covered  
+> `lcovonly` - creates only an lcov.info file as output  
+> `lcov` - generates both the HTML and lcov.info reports  
+> `cobertura` - create a cobertura-coverage.xml report to use with Hudson CI  
+> `text-summary` - a simple text summary of the coverage result, output is to stdout (console)  
+> `text` - a more detailed text report showing information about all source files covered  
+> `teamcity` - generates a series of message used by Team City for coverage reporting
+
+This equates to the `--report` option for istanbul coverage.
 
 ### options.steps
-Specify where step definitions are located from project root directory
+Specify where step definitions are located from project root directory.
 
 Type: `String`  
 Default: `<src>/step_definitions`
 
-This equates to the `--require` option for cucumber
+This equates to the `--require` option for cucumber.
 
 ### options.tags
-Run just a specific tag or tags for a feature file set
+Run just a specific tag or tags for a feature file set.
 
 Type: `String` or `Array`  
 Default: `null`
 
-This equates to the `--tags` option for cucumber
+This equates to the `--tags` option for cucumber.
 
 > Hint:  
 > Run just one tag `@tag`  

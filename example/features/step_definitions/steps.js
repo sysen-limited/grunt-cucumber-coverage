@@ -8,6 +8,12 @@ let exampleSteps = function () {
         callback();
     });
 
+    this.When(/^I call the "([^"]*)" method with value (\d+)$/, function (method, argA, callback) {
+        let instance = new this.module();
+        this.result = instance[method].call(this, parseInt(argA));
+        callback();
+    });
+
     this.When(/^I call the "([^"]*)" method with values (\d+) and (\d+)$/, function (method, argA, argB, callback) {
         let instance = new this.module();
         this.result = instance[method].call(this, parseInt(argA), parseInt(argB));

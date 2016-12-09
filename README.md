@@ -58,7 +58,8 @@ cucumber_coverage: {
                 lines: 100,
                 statements: 100,
                 functions: 100,
-                branches: 100                               // all are percentages to use during checks
+                branches: 100,                              // all coverage levels are percentages to use during checks
+                force: true                                 // when using tags checking is not performed, set force to still check coverage levels
             },
             format: 'pretty',                               // showing output of feature execution (default: pretty)
             print: 'detail',                                // display results of coverage to console (default: summary)
@@ -142,12 +143,14 @@ Default: `false`
 > Note:  
 > The default **false** value will mean that coverage levels are not checked and low coverage will not result in a grunt error.
 
-| key | default |
-| :--- | :--- |
-| lines | 80 |
-| statements | 80 |
-| functions | 80 |
-| branches | 80 |
+When using `true` and not an object then the following defaults are used;
+
+> `check.lines` - 80  
+> `check.statements` - 80  
+> `check.functions` - 80  
+> `check.branches` - 80
+
+In addition you can specify `check.force` to be `true`. When this is set coverage checking will always occur even when using tags that might lower coverage levels.
 
 This equates to the `--lines` `--statements` `--functions` `--branches` options for istanbul check-coverage.
 

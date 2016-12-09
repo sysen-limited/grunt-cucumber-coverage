@@ -33,7 +33,8 @@ module.exports = function (grunt) {
                         lines: 100,
                         statements: 100,
                         functions: 100,
-                        branches: 100
+                        branches: 100,
+                        force: true
                     },
                     format: 'progress',
                     print: 'detail',

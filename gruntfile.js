@@ -20,6 +20,7 @@ module.exports = function (grunt) {
             exampleOne: {
                 src: 'example/features',
                 options: {
+                    coverage: 'coverage/one',
                     print: 'detail',
                     tags: ['@Shapes'],
                     target: 'example/src'
@@ -28,6 +29,7 @@ module.exports = function (grunt) {
             exampleTwo: {
                 src: 'example/features',
                 options: {
+                    coverage: 'coverage/two',
                     check: {
                         lines: 100,
                         statements: 100,

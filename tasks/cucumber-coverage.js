@@ -4,12 +4,13 @@ module.exports = function (grunt) {
 
     let executeCoverage = (grunt, features, options) => {
         return new Promise((resolve, reject) => {
-            let target = grunt.option('target') || options.target;
+            let coverage = grunt.option('coverage') || options.coverage;
             let format = grunt.option('format') || options.format;
             let print = grunt.option('print') || options.print;
             let report = grunt.option('report') || options.report;
             let steps = grunt.option('steps') || options.steps;
             let tags = grunt.option('tags') || options.tags;
+            let target = grunt.option('target') || options.target;
 
             if (!features.length) {
                 return grunt.log.error('No feature files found.');
@@ -18,6 +19,8 @@ module.exports = function (grunt) {
             let args = ['node_modules/.bin/istanbul', 'cover'];
 
             args.push('--root', target);
+
+            args.push('--dir', coverage);
 
             args.push('--print', print || 'summary');
 

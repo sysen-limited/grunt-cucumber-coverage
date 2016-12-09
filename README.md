@@ -53,6 +53,7 @@ cucumber_coverage: {
     example: {
         src: 'example/features',                            // folder to the tests to execute
         options: {
+            coverage: 'logs/coverage',                      // set where coverage reports will be stored in relation to gruntfile
             check: {                                        // check coverage meets minimum requirements of project
                 lines: 100,
                 statements: 100,
@@ -133,6 +134,14 @@ The following are some screenshots from the HTML produced report for the above t
 ![html-report](https://cloud.githubusercontent.com/assets/773633/21051809/ca2ac38c-be19-11e6-9e72-7811e2fcb73c.png)
 
 ## Options
+
+### options.coverage
+This allows for setting the coverage output directory location for reports to be generated. Helpful for running multiple coverage reports or wanting a single location for all temporary assets in a project.
+
+Type: `String`  
+Default: `coverage`
+
+This equates to the `--dir` option for istanbul coverage.
 
 ### options.check
 This enables coverage checking of thresholds, if set to true then default values are used.
